@@ -1,19 +1,26 @@
 package com.umg.demo.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Publicacion {
 
     @Id
     private Long id;
+
     private String titulo;
     private String texto;
     private String fechaPublicacion;
-    private Long usuarioId;
 
-    // Getters and Setters
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+    @OneToMany(mappedBy = "publicacion", cascade = CascadeType.ALL)
+    private List<Comentario> comentarios;
+
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -46,11 +53,19 @@ public class Publicacion {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public Long getUsuarioId() {
-        return usuarioId;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 }

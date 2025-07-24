@@ -1,16 +1,24 @@
 package com.umg.demo.entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
 
 @Entity
 public class Comentario {
+
     @Id
     private Long id;
-    private String texto;
-    private Long publicacionId;
-    private Long usuarioId;
 
-    // Getters and Setters
+    private String texto;
+
+    @ManyToOne
+    @JoinColumn(name = "publicacion_id", nullable = false)
+    private Publicacion publicacion;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -27,21 +35,19 @@ public class Comentario {
         this.texto = texto;
     }
 
-
-    public Long getPublicacionId() {
-        return publicacionId;
+    public Publicacion getPublicacion() {
+        return publicacion;
     }
 
-    public void setPublicacionId(Long publicacionId) {
-        this.publicacionId = publicacionId;
+    public void setPublicacion(Publicacion publicacion) {
+        this.publicacion = publicacion;
     }
 
-    public Long getUsuarioId() {
-        return usuarioId;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
-
 }
