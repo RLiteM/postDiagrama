@@ -1,7 +1,10 @@
 package com.umg.demo.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 import java.util.List;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
 
 @Entity
 public class Usuario {
