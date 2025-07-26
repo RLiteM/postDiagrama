@@ -25,6 +25,18 @@ public class Publicacion {
     @OneToMany(mappedBy = "publicacion", cascade = CascadeType.ALL)
     private List<Comentario> comentarios;
 
+    // constructor por defecto
+    public Publicacion() {
+    }   
+    // constructor con parámetros
+    public Publicacion(Long id, String titulo, String texto, String fechaPublicacion, Usuario usuario) {
+        this.id = id;
+        this.titulo = titulo;
+        this.texto = texto;
+        this.fechaPublicacion = fechaPublicacion;
+        this.usuario = usuario;
+    }
+
     // Getters y Setters
     public Long getId() {
         return id;

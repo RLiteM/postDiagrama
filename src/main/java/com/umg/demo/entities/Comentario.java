@@ -20,6 +20,18 @@ public class Comentario {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
+    // Constructor por defecto
+    public Comentario() {
+    }       
+
+// Constructor con parámetros
+    public Comentario(Long id, String texto, Publicacion publicacion, Usuario usuario) {
+        this.id = id;
+        this.texto = texto;
+        this.publicacion = publicacion;
+        this.usuario = usuario;
+    }
+
     // Getters y Setters
     public Long getId() {
         return id;

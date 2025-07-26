@@ -21,6 +21,16 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Comentario> comentarios;
 
+    // contructor por defecto
+    public Usuario() {
+    }
+    // constructor con parámetros
+    public Usuario(Long id, String nombreUsuario, String correo) {
+        this.id = id;
+        this.nombreUsuario = nombreUsuario;
+        this.correo = correo;
+    }
+
     // Getters y Setters
     public Long getId() {
         return id;
